@@ -10,6 +10,7 @@ Every game runs in the browser on its own. You can play it, read every line of i
 
 | | Game | Layout | RTP | Play | Source |
 |---|---|---|---|---|---|
+| <img src="tiles/scorching-hot.webp" width="96" alt="SCORCHING HOT"> | **SCORCHING HOT**<br>A classic fruit slot. No wild, no free games. Sevens are the top symbol, cherries pay from 2, and three or more stars anywhere pay the total bet on top of the lines. | 5x3, 5 lines | 95.66% | [Play](https://apexslots.eu/games/scorching-hot/) | [Code](scorching-hot/) |
 | <img src="tiles/pearl-reef.webp" width="96" alt="PEARL REEF"> | **PEARL REEF**<br>A reef slot. The turtle is wild, doubles the wins it completes and is the top symbol. Clams pay anywhere and three start 15 free games on their own reels, where every win pays triple. | 5x3, 10 lines | 95.13% | [Play](https://apexslots.eu/games/pearl-reef/) | [Code](pearl-reef/) |
 | <img src="tiles/discovery-voyage.webp" width="96" alt="DISCOVERY VOYAGE"> | **DISCOVERY VOYAGE**<br>A voyage slot. The captain is wild and the top symbol. Three galleons start 10 free games on their own reels, where the galleon is wild as well. | 5x3, 10 lines | 95.02% | [Play](https://apexslots.eu/games/discovery-voyage/) | [Code](discovery-voyage/) |
 | <img src="tiles/house-of-ra.webp" width="96" alt="HOUSE OF RA"> | **HOUSE OF RA**<br>An Egyptian slot. The sun disc is wild and the scatter. Three start 10 free games on their own reels where the best way on the screen expands over its reels and pays on every line. | 5x3, 10 lines | 95.18% | [Play](https://apexslots.eu/games/house-of-ra/) | [Code](house-of-ra/) |
@@ -35,9 +36,9 @@ Open the address Vite prints. `npm run build` writes the static bundle to `dist/
 |---|---|
 | `src/engine/` | The maths: reel strips, paytable, bet lines, the evaluator and the round. No graphics in here. |
 | `src/game/` | The PixiJS client: reels, HUD, win presentation, game info screen, and the sound. Every game's soundtrack is synthesised in WebAudio, there are no audio files. |
-| `src/sim/` | The proofs: exact enumeration, closed-form par sheet, reel strip check against the source yaml, Monte Carlo. |
+| `src/sim/` | The proofs: exact enumeration and Monte Carlo in every game, and in most a closed-form par sheet and a reel strip check against the source yaml. |
 | `tests/` | Vitest tests of the engine. |
-| `slotopol/` | The reference maths the game was ported from, as published by slotopol (MIT), with their licence. |
+| `slotopol/` | The reference maths the game was ported from, as published by slotopol (MIT), with their licence. The earliest ports carry no copy and name the slotopol file in their README instead. |
 | `public/` | The art. |
 
 Each game's own README has its paytable, rules, RTP and the exact commands that reproduce the figure.

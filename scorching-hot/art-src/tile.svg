@@ -1,0 +1,201 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <radialGradient id="bgGlow" cx="0.5" cy="0.46" r="0.75">
+      <stop offset="0" stop-color="#a82805"/>
+      <stop offset="0.35" stop-color="#611203"/>
+      <stop offset="0.7" stop-color="#2c0602"/>
+      <stop offset="1" stop-color="#150301"/>
+    </radialGradient>
+    <radialGradient id="coreGlow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffb340" stop-opacity="0.85"/>
+      <stop offset="0.5" stop-color="#ff5a10" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#ff3c00" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="svnBody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ff5a3c"/>
+      <stop offset="0.45" stop-color="#e81c10"/>
+      <stop offset="1" stop-color="#8f0500"/>
+    </linearGradient>
+    <linearGradient id="svnRim" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff3d0"/>
+      <stop offset="1" stop-color="#e8b84a"/>
+    </linearGradient>
+    <linearGradient id="svnGloss" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="chBody" cx="0.35" cy="0.3" r="0.9">
+      <stop offset="0" stop-color="#ff6a6a"/>
+      <stop offset="0.4" stop-color="#e01a2c"/>
+      <stop offset="1" stop-color="#7c0212"/>
+    </radialGradient>
+    <linearGradient id="leafG" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8fd63a"/>
+      <stop offset="1" stop-color="#2f7d10"/>
+    </linearGradient>
+    <radialGradient id="lemBody" cx="0.38" cy="0.32" r="0.95">
+      <stop offset="0" stop-color="#fff7a8"/>
+      <stop offset="0.45" stop-color="#ffd928"/>
+      <stop offset="1" stop-color="#c78f00"/>
+    </radialGradient>
+    <radialGradient id="orgBody" cx="0.38" cy="0.32" r="0.95">
+      <stop offset="0" stop-color="#ffcf7a"/>
+      <stop offset="0.45" stop-color="#ff9210"/>
+      <stop offset="1" stop-color="#b34d00"/>
+    </radialGradient>
+    <radialGradient id="plmBody" cx="0.38" cy="0.3" r="0.95">
+      <stop offset="0" stop-color="#c88ae0"/>
+      <stop offset="0.4" stop-color="#8a2fae"/>
+      <stop offset="1" stop-color="#3d0a56"/>
+    </radialGradient>
+    <radialGradient id="grpBody" cx="0.38" cy="0.3" r="0.95">
+      <stop offset="0" stop-color="#b07ae8"/>
+      <stop offset="0.45" stop-color="#6a25b8"/>
+      <stop offset="1" stop-color="#2e0a5e"/>
+    </radialGradient>
+    <linearGradient id="starBody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff3b0"/>
+      <stop offset="0.45" stop-color="#ffc814"/>
+      <stop offset="1" stop-color="#d88800"/>
+    </linearGradient>
+    <radialGradient id="starGlow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#fff2a0" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#ffb300" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="14"/>
+    </filter>
+    <filter id="soften" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="4"/>
+    </filter>
+  </defs>
+
+  <!-- backdrop: furnace glow with rising flame tongues -->
+  <rect width="1024" height="1024" fill="url(#bgGlow)"/>
+  <g filter="url(#soft)" opacity="0.8">
+    <path d="M 120 1024 Q 180 780 120 640 Q 260 760 250 900 Q 330 800 320 660 Q 420 820 380 1024 Z" fill="#ff5a10" opacity="0.5"/>
+    <path d="M 904 1024 Q 844 760 910 610 Q 780 750 790 900 Q 700 790 715 650 Q 610 830 660 1024 Z" fill="#ff5a10" opacity="0.5"/>
+    <path d="M 350 1024 Q 420 880 400 780 Q 500 880 480 970 Q 560 900 545 800 Q 640 920 600 1024 Z" fill="#ffb340" opacity="0.45"/>
+  </g>
+  <ellipse cx="512" cy="470" rx="430" ry="400" fill="url(#coreGlow)"/>
+  <g fill="#ffd060" opacity="0.85">
+    <circle cx="150" cy="330" r="5"/><circle cx="240" cy="180" r="4"/><circle cx="420" cy="110" r="5"/>
+    <circle cx="700" cy="90" r="4"/><circle cx="880" cy="220" r="5"/><circle cx="930" cy="430" r="4"/>
+    <circle cx="90" cy="560" r="4"/><circle cx="200" cy="760" r="5"/><circle cx="850" cy="700" r="5"/>
+    <circle cx="640" cy="150" r="3"/><circle cx="330" cy="240" r="3"/><circle cx="770" cy="330" r="3"/>
+  </g>
+
+  <!-- back row: melon and grapes peeking behind the seven -->
+  <g transform="translate(210 340) rotate(-14) scale(1.05)" opacity="0.96">
+    <g transform="translate(-150 -150)">
+      <path d="M 150 62 Q 148 44 158 32" fill="none" stroke="#5a3410" stroke-width="9" stroke-linecap="round"/>
+      <path d="M 158 42 Q 190 20 226 30 Q 218 64 188 72 Q 172 58 158 42 Z" fill="url(#leafG)" stroke="#1e5a08" stroke-width="7" stroke-linejoin="round"/>
+      <g stroke="#1e0440" stroke-width="6">
+        <circle cx="104" cy="102" r="36" fill="url(#grpBody)"/>
+        <circle cx="196" cy="102" r="36" fill="url(#grpBody)"/>
+        <circle cx="150" cy="94" r="36" fill="url(#grpBody)"/>
+        <circle cx="82" cy="164" r="36" fill="url(#grpBody)"/>
+        <circle cx="218" cy="164" r="36" fill="url(#grpBody)"/>
+        <circle cx="150" cy="156" r="38" fill="url(#grpBody)"/>
+        <circle cx="112" cy="222" r="36" fill="url(#grpBody)"/>
+        <circle cx="188" cy="222" r="36" fill="url(#grpBody)"/>
+        <circle cx="150" cy="262" r="34" fill="url(#grpBody)"/>
+      </g>
+      <ellipse cx="134" cy="86" rx="14" ry="9" fill="#ffffff" opacity="0.5" transform="rotate(-28 134 86)"/>
+      <ellipse cx="136" cy="146" rx="15" ry="10" fill="#ffffff" opacity="0.5" transform="rotate(-28 136 146)"/>
+    </g>
+  </g>
+  <g transform="translate(830 330) rotate(14) scale(0.95)" opacity="0.96">
+    <clipPath id="melonHalf"><rect x="-130" y="0" width="260" height="140"/></clipPath>
+    <g clip-path="url(#melonHalf)">
+      <circle r="118" fill="url(#leafG)" stroke="#0e4a04" stroke-width="8"/>
+      <circle r="104" fill="#d8f0b0"/>
+      <circle r="94" fill="url(#chBody)"/>
+      <g fill="#2a1408">
+        <ellipse cx="-48" cy="34" rx="7" ry="11" transform="rotate(24 -48 34)"/>
+        <ellipse cx="0" cy="52" rx="7" ry="11"/>
+        <ellipse cx="48" cy="34" rx="7" ry="11" transform="rotate(-24 48 34)"/>
+        <ellipse cx="-24" cy="72" rx="6" ry="10" transform="rotate(12 -24 72)"/>
+        <ellipse cx="26" cy="72" rx="6" ry="10" transform="rotate(-12 26 72)"/>
+      </g>
+    </g>
+    <line x1="-118" y1="0" x2="118" y2="0" stroke="#0e4a04" stroke-width="8" stroke-linecap="round"/>
+  </g>
+
+  <!-- the star, blazing top right -->
+  <g transform="translate(790 130)">
+    <circle r="130" fill="url(#starGlow)"/>
+    <g transform="scale(0.62) translate(-150 -150)">
+      <path d="M 150 30 L 184 112 L 272 118 L 205 176 L 226 262 L 150 216 L 74 262 L 95 176 L 28 118 L 116 112 Z"
+            fill="url(#starBody)" stroke="#9a5c00" stroke-width="9" stroke-linejoin="round"/>
+      <path d="M 150 52 L 176 116 L 150 104 L 124 116 Z" fill="#ffffff" opacity="0.6"/>
+    </g>
+  </g>
+
+  <!-- mid row: lemon and orange -->
+  <g transform="translate(170 650) rotate(-10) scale(1.15)">
+    <g transform="translate(-150 -150)">
+      <g transform="rotate(-24 150 160)">
+        <path d="M 44 160 Q 40 138 56 134 Q 66 92 108 76 Q 150 60 192 76 Q 234 92 244 134 Q 260 138 256 160 Q 260 182 244 186 Q 234 228 192 244 Q 150 260 108 244 Q 66 228 56 186 Q 40 182 44 160 Z"
+              fill="url(#lemBody)" stroke="#8a5c00" stroke-width="8" stroke-linejoin="round"/>
+        <ellipse cx="108" cy="118" rx="34" ry="20" fill="#ffffff" opacity="0.5" transform="rotate(-24 108 118)"/>
+      </g>
+    </g>
+  </g>
+  <g transform="translate(855 640) rotate(10) scale(1.1)">
+    <g transform="translate(-150 -150)">
+      <circle cx="150" cy="168" r="104" fill="url(#orgBody)" stroke="#8a3c00" stroke-width="8"/>
+      <ellipse cx="112" cy="126" rx="34" ry="22" fill="#ffffff" opacity="0.5" transform="rotate(-28 112 126)"/>
+      <path d="M 150 66 Q 148 46 158 34" fill="none" stroke="#5a3410" stroke-width="9" stroke-linecap="round"/>
+      <path d="M 158 44 Q 186 20 222 28 Q 216 62 186 72 Q 170 58 158 44 Z"
+            fill="url(#leafG)" stroke="#1e5a08" stroke-width="7" stroke-linejoin="round"/>
+    </g>
+  </g>
+
+  <!-- the giant seven, heart of the tile -->
+  <g transform="translate(512 470) rotate(-6)">
+    <g filter="url(#soft)" opacity="0.9">
+      <path transform="scale(2.6)" d="M -78 -98 L 78 -98 L 88 -62 L 30 96 Q 24 112 4 112 L -34 112 Q -50 112 -44 94 L 12 -46 L -60 -46 Q -74 -46 -78 -60 Z"
+            fill="#ff7a10"/>
+    </g>
+    <g transform="scale(2.35)">
+      <path d="M -78 -98 L 78 -98 L 88 -62 L 30 96 Q 24 112 4 112 L -34 112 Q -50 112 -44 94 L 12 -46 L -60 -46 Q -74 -46 -78 -60 Z"
+            fill="url(#svnRim)" stroke="#7a3c00" stroke-width="10" stroke-linejoin="round"/>
+      <path d="M -66 -87 L 66 -87 L 72 -64 L 18 88 Q 15 98 4 98 L -28 98 Q -36 98 -33 89 L 28 -58 L -58 -58 Q -64 -58 -66 -64 Z"
+            fill="url(#svnBody)"/>
+      <path d="M -62 -84 L 62 -84 L 65 -72 Q 10 -62 -58 -70 Q -63 -71 -63 -76 Z" fill="url(#svnGloss)"/>
+    </g>
+  </g>
+
+  <!-- front row: plum and the cherries -->
+  <g transform="translate(300 850) rotate(8) scale(1.1)">
+    <g transform="translate(-150 -150)">
+      <path d="M 150 70 Q 150 52 162 40" fill="none" stroke="#5a3410" stroke-width="9" stroke-linecap="round"/>
+      <ellipse cx="150" cy="172" rx="100" ry="102" fill="url(#plmBody)" stroke="#2a0440" stroke-width="8"/>
+      <path d="M 150 76 Q 128 128 128 172 Q 128 216 150 266" fill="none" stroke="#2a0440" stroke-width="6" opacity="0.55"/>
+      <ellipse cx="110" cy="128" rx="32" ry="20" fill="#ffffff" opacity="0.45" transform="rotate(-30 110 128)"/>
+      <path d="M 162 50 Q 190 26 226 34 Q 220 68 190 78 Q 174 64 162 50 Z"
+            fill="url(#leafG)" stroke="#1e5a08" stroke-width="7" stroke-linejoin="round"/>
+    </g>
+  </g>
+  <g transform="translate(700 860) rotate(-6) scale(1.35)">
+    <g transform="translate(-150 -150)">
+      <g stroke="#5a3410" stroke-width="9" fill="none" stroke-linecap="round">
+        <path d="M 150 52 Q 108 96 96 176"/>
+        <path d="M 150 52 Q 186 108 196 168"/>
+      </g>
+      <path d="M 150 52 Q 176 24 216 30 Q 246 36 258 62 Q 224 74 196 64 Q 168 56 150 52 Z"
+            fill="url(#leafG)" stroke="#1e5a08" stroke-width="7" stroke-linejoin="round"/>
+      <circle cx="92" cy="206" r="60" fill="url(#chBody)" stroke="#4a000a" stroke-width="7"/>
+      <circle cx="200" cy="200" r="64" fill="url(#chBody)" stroke="#4a000a" stroke-width="7"/>
+      <ellipse cx="72" cy="184" rx="20" ry="13" fill="#ffffff" opacity="0.55" transform="rotate(-28 72 184)"/>
+      <ellipse cx="178" cy="176" rx="22" ry="14" fill="#ffffff" opacity="0.55" transform="rotate(-28 178 176)"/>
+    </g>
+  </g>
+
+  <!-- heat haze streaks over everything -->
+  <g filter="url(#soften)" opacity="0.35">
+    <path d="M 60 940 Q 512 880 964 940" fill="none" stroke="#ffb340" stroke-width="10" stroke-linecap="round"/>
+    <path d="M 100 100 Q 512 160 924 90" fill="none" stroke="#ff7a10" stroke-width="8" stroke-linecap="round"/>
+  </g>
+</svg>
