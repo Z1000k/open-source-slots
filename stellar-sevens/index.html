@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>STELLAR SEVENS - Demo</title>
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⭐</text></svg>"
+    />
+    <link rel="stylesheet" href="/src/game/style.css" />
+    <link rel="preload" href="/assets/art/bg.webp" as="image" type="image/webp" />
+  </head>
+  <body>
+    <div id="loader" aria-label="Loading">
+      <div class="loader-inner">
+        <div class="loader-presents">APEXSLOTS PRESENTS</div>
+        <div class="loader-title"><span class="t1">STELLAR</span><span class="t2">SEVENS</span></div>
+        <div class="loader-bar"><div class="loader-fill"></div></div>
+      </div>
+    </div>
+
+    <div id="intro" aria-label="Game features">
+      <div class="intro-inner">
+        <div class="intro-title"><span class="t1">STELLAR</span><span class="t2">SEVENS</span></div>
+        <div class="intro-badges">
+          <div class="intro-volatility">VOLATILITY <span class="vol-pips"><i></i><i></i><i></i><i class="off"></i><i class="off"></i></span></div>
+          <div class="intro-maxwin">MAX WIN <b>300x</b></div>
+        </div>
+        <div class="intro-cards">
+          <div class="intro-card">
+            <div class="intro-art"><img src="/assets/art/symbols/CHERRY.webp" alt=""></div>
+            <h3>PURE 3x3 SPEED</h3>
+            <p>Three reels, five lines, nine symbols and every one of them pays. No wilds, no scatters, no free games to wait for.</p>
+          </div>
+          <div class="intro-card">
+            <div class="intro-art"><img src="/assets/art/symbols/STAR.webp" alt=""></div>
+            <h3>ONE SIMPLE RULE</h3>
+            <p>Three of a kind on any of the five lines is a win. Every line is always live, and every winning line is paid.</p>
+          </div>
+          <div class="intro-card">
+            <div class="intro-art"><img src="/assets/art/symbols/SEVEN.webp" alt=""></div>
+            <h3>STELLAR SEVENS</h3>
+            <p>Three sevens on a line pay 60x the total bet. Fill the whole screen with them and all five lines land the 300x MAX WIN.</p>
+          </div>
+        </div>
+        <div class="intro-continue">CLICK TO CONTINUE</div>
+      </div>
+    </div>
+
+    <div id="app">
+      <header id="logo"><span class="t1">STELLAR</span><span class="t2">SEVENS</span></header>
+      <main id="table">
+        <div id="machine"><div id="stage"></div></div>
+        <div id="ui"></div>
+      </main>
+    </div>
+    <script type="module" src="/src/game/main.ts"></script>
+  </body>
+</html>
