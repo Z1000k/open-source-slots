@@ -1,0 +1,28 @@
+{
+  "name": "samurai",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "SAMURAI - 5x3, 20-line warrior slot, samurai wild, gong scatter, 10 free games where a samurai turns his whole reel wild (math ported from slotopol/server, MIT, original reels)",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "sim": "tsx src/sim/run.ts",
+    "sim:exact": "tsx src/sim/exact.ts",
+    "sim:parsheet": "tsx src/sim/parsheet.ts",
+    "sim:reels": "tsx src/sim/checkReels.ts",
+    "gen:reels": "node src/sim/genReels.mjs"
+  },
+  "dependencies": {
+    "pixi.js": "^8.6.6"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3",
+    "vite": "^6.0.7",
+    "vitest": "^2.1.8"
+  }
+}
