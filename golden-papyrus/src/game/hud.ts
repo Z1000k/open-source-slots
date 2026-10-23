@@ -1,0 +1,259 @@
+/**
+ * The control bar and money meters, plain DOM under the Pixi frame: balance,
+ * bet stepper, win meter, the SPIN button and the message line, plus the
+ * BIG WIN plaque and the whole free games ceremony (intro with the chosen
+ * symbol, the spins-left counter, retrigger flashes, the closing tally).
+ * Meters say DEMO in the demo and nothing but the truth behind the login.
+ */
+import type { PaySymbol } from '../engine';
+import { sound } from './audio';
+import { countUp } from './tween';
+import { GameInfo } from './gameinfo';
+import { symbolArt } from './assets';
+import { REAL } from './wallet';
+
+const DEMO = REAL ? '' : 'DEMO ';
+
+const ALL_BETS = [
+  0.1, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 25, 30, 35,
+  40, 45, 50, 75, 100,
+];
+/** Real play caps the stake at €5 (the server refuses more); the demo keeps the full ladder. */
+const BETS = REAL ? ALL_BETS.filter((b) => b <= 5) : ALL_BETS;
+
+export interface HudCallbacks {
+  /** manual spin, and the quick-stop while the reels roll */
+  onSpin: () => void;
+}
+
+export class Hud {
+  private betIndex = BETS.indexOf(1);
+  private busy = false;
+  private balanceValue = 0;
+
+  private readonly balanceEl: HTMLElement;
+  private readonly winEl: HTMLElement;
+  private readonly betEl: HTMLElement;
+  private readonly messageEl: HTMLElement;
+  private readonly spinBtn: HTMLButtonElement;
+  private readonly betUp: HTMLButtonElement;
+  private readonly betDown: HTMLButtonElement;
+  private readonly bigwinEl: HTMLElement;
+  private readonly fsPanel: HTMLElement;
+  private readonly overlayEl: HTMLDivElement;
+  private readonly info: GameInfo;
+
+  constructor(root: HTMLElement, cb: HudCallbacks) {
+    root.innerHTML = `
+      <div id="hud-bar">
+        <button id="info-btn" type="button" aria-label="Game info">i</button>
+        <button id="sound-btn" type="button" aria-label="Toggle sound"></button>
+        <div class="meter"><span class="meter-label">${DEMO}BALANCE</span><span id="m-balance">0.00</span></div>
+        <div class="bet-stepper">
+          <button id="bet-down" type="button" aria-label="Lower bet">-</button>
+          <div class="meter"><span class="meter-label">TOTAL BET</span><span id="m-bet"></span></div>
+          <button id="bet-up" type="button" aria-label="Raise bet">+</button>
+        </div>
+        <button id="spin-btn" type="button" aria-label="Spin">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round">
+            <path d="M 40 24 A 16 16 0 1 1 33 11" />
+            <path d="M 33 3 L 33 12 L 42 12" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="meter"><span class="meter-label">WIN</span><span id="m-win">0.00</span></div>
+        <div id="hud-message"></div>
+        <div id="fs-panel" hidden>
+          <span class="fs-art"></span>
+          <span class="fs-text">FREE GAMES <b class="fs-left">0</b></span>
+        </div>
+      </div>
+      <div id="bigwin" hidden><div class="bigwin-title">BIG WIN</div><div class="bigwin-amount">0.00</div></div>
+    `;
+    this.balanceEl = root.querySelector('#m-balance')!;
+    this.winEl = root.querySelector('#m-win')!;
+    this.betEl = root.querySelector('#m-bet')!;
+    this.messageEl = root.querySelector('#hud-message')!;
+    this.spinBtn = root.querySelector('#spin-btn')!;
+    this.betUp = root.querySelector('#bet-up')!;
+    this.betDown = root.querySelector('#bet-down')!;
+    this.bigwinEl = root.querySelector('#bigwin')!;
+    this.fsPanel = root.querySelector('#fs-panel')!;
+    this.info = new GameInfo(() => this.bet);
+
+    this.overlayEl = document.createElement('div');
+    this.overlayEl.id = 'bonus-overlay';
+    this.overlayEl.hidden = true;
+    document.body.appendChild(this.overlayEl);
+
+    const soundBtn = root.querySelector<HTMLButtonElement>('#sound-btn')!;
+    const speaker = (muted: boolean): string =>
+      `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 9.5 L8 9.5 L13 5 L13 19 L8 14.5 L4 14.5 Z" fill="currentColor" stroke="none"/>
+        ${muted ? '<path d="M16.5 9.5 L21 14.5 M21 9.5 L16.5 14.5"/>' : '<path d="M16 9 Q18.5 12 16 15 M18.5 6.5 Q22.5 12 18.5 17.5"/>'}
+      </svg>`;
+    soundBtn.innerHTML = speaker(sound.muted);
+    const toggleSound = (): void => {
+      soundBtn.innerHTML = speaker(sound.toggle());
+      sound.click();
+    };
+    soundBtn.addEventListener('click', toggleSound);
+
+    this.spinBtn.addEventListener('click', cb.onSpin);
+    this.betUp.addEventListener('click', () => {
+      sound.click();
+      this.stepBet(1);
+    });
+    this.betDown.addEventListener('click', () => {
+      sound.click();
+      this.stepBet(-1);
+    });
+    root.querySelector('#info-btn')!.addEventListener('click', () => {
+      sound.click();
+      this.info.open();
+    });
+    window.addEventListener('keydown', (e) => {
+      if (e.code === 'KeyS' && !e.repeat) {
+        toggleSound();
+        return;
+      }
+      if (e.code === 'Space' && !e.repeat) {
+        e.preventDefault();
+        if (this.info.isOpen) return;
+        cb.onSpin();
+      }
+    });
+
+    this.renderBet();
+    this.refresh();
+  }
+
+  get bet(): number {
+    return BETS[this.betIndex];
+  }
+
+  get balance(): number {
+    return this.balanceValue;
+  }
+
+  setBalance(v: number): void {
+    this.balanceValue = v;
+    this.balanceEl.textContent = v.toFixed(2);
+  }
+
+  setWin(v: number): void {
+    this.winEl.textContent = v.toFixed(2);
+  }
+
+  /** Animate the win meter counting up to `v`, with the temple ticking. */
+  async countWin(v: number, ms = 700): Promise<void> {
+    sound.countStart();
+    await countUp(ms, 0, v, (n) => (this.winEl.textContent = n.toFixed(2)));
+    sound.countStop();
+  }
+
+  /** The BIG WIN plaque with its own count-up; resolves when it fades. */
+  async bigWin(v: number): Promise<void> {
+    const amount = this.bigwinEl.querySelector('.bigwin-amount')!;
+    sound.bigwin();
+    this.bigwinEl.hidden = false;
+    this.bigwinEl.classList.add('show');
+    await countUp(1400, 0, v, (n) => (amount.textContent = n.toFixed(2)));
+    await new Promise((r) => setTimeout(r, 700));
+    this.bigwinEl.classList.remove('show');
+    await new Promise((r) => setTimeout(r, 350));
+    this.bigwinEl.hidden = true;
+  }
+
+  message(text: string): void {
+    this.messageEl.textContent = text;
+  }
+
+  setBusy(busy: boolean): void {
+    this.busy = busy;
+    this.refresh();
+  }
+
+  // -------------------------------------------------------- free games UI
+
+  /** Show or clear the spins-left counter beside the meters. */
+  setFreeSpins(left: number | null, es?: PaySymbol): void {
+    if (left === null) {
+      this.fsPanel.hidden = true;
+      return;
+    }
+    this.fsPanel.hidden = false;
+    this.fsPanel.querySelector('.fs-left')!.textContent = String(left);
+    if (es) this.fsPanel.querySelector('.fs-art')!.innerHTML = symbolArt(es, 'fs-sym');
+  }
+
+  /** A full-screen plaque; resolves on click or after `ms`. */
+  private plaque(html: string, ms: number): Promise<void> {
+    this.overlayEl.innerHTML = `<div class="bo-inner">${html}</div>`;
+    this.overlayEl.hidden = false;
+    requestAnimationFrame(() => this.overlayEl.classList.add('show'));
+    return new Promise((resolve) => {
+      let done = false;
+      const finish = (): void => {
+        if (done) return;
+        done = true;
+        this.overlayEl.classList.remove('show');
+        setTimeout(() => {
+          this.overlayEl.hidden = true;
+          resolve();
+        }, 300);
+      };
+      this.overlayEl.onclick = finish;
+      setTimeout(finish, ms);
+    });
+  }
+
+  /** The trigger ceremony: 10 free games, and the chosen expanding symbol. */
+  async bonusIntro(es: PaySymbol): Promise<void> {
+    sound.bonusStart();
+    await this.plaque(
+      `<div class="bo-kicker">THE PAPYRUS OPENS</div>
+       <div class="bo-title">10 FREE GAMES</div>
+       <div class="bo-sub">THE SPECIAL EXPANDING SYMBOL IS</div>
+       <div class="bo-art">${symbolArt(es, 'bo-sym')}</div>
+       <div class="bo-hint">IT PAYS IN ANY POSITION, ON ALL 10 LINES</div>`,
+      3600,
+    );
+    sound.esReveal();
+  }
+
+  /** More free games landed mid-bonus. */
+  async retriggerFlash(): Promise<void> {
+    sound.retrigger();
+    await this.plaque(
+      `<div class="bo-title">+10 FREE GAMES</div>`,
+      1700,
+    );
+  }
+
+  /** The closing tally; `win` in money. */
+  async bonusEnd(win: number): Promise<void> {
+    sound.bonusEnd();
+    await this.plaque(
+      `<div class="bo-kicker">FREE GAMES COMPLETE</div>
+       <div class="bo-title bo-amount">${win.toFixed(2)}</div>
+       <div class="bo-sub">${win > 0 ? 'ADDED TO YOUR BALANCE' : 'THE TOMB KEPT ITS GOLD THIS TIME'}</div>`,
+      3200,
+    );
+  }
+
+  private stepBet(dir: number): void {
+    if (this.busy) return;
+    this.betIndex = Math.min(BETS.length - 1, Math.max(0, this.betIndex + dir));
+    this.renderBet();
+    this.refresh();
+  }
+
+  private renderBet(): void {
+    this.betEl.textContent = this.bet.toFixed(2);
+  }
+
+  private refresh(): void {
+    this.betUp.disabled = this.busy || this.betIndex === BETS.length - 1;
+    this.betDown.disabled = this.busy || this.betIndex === 0;
+  }
+}

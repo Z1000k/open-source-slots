@@ -1,0 +1,26 @@
+{
+  "name": "golden-papyrus",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "GOLDEN PAPYRUS - 5x3 Egyptian book slot with expanding free games (math ported from slotopol/server, MIT)",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "sim": "tsx src/sim/run.ts",
+    "sim:exact": "tsx src/sim/exact.ts",
+    "sim:parsheet": "tsx src/sim/parsheet.ts"
+  },
+  "dependencies": {
+    "pixi.js": "^8.6.6"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3",
+    "vite": "^6.0.7",
+    "vitest": "^2.1.8"
+  }
+}

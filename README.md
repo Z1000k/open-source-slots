@@ -10,6 +10,7 @@ Every game runs in the browser on its own. You can play it, read every line of i
 
 | | Game | Layout | RTP | Play | Source |
 |---|---|---|---|---|---|
+| <img src="tiles/golden-papyrus.webp" width="96" alt="GOLDEN PAPYRUS"> | **GOLDEN PAPYRUS**<br>An Egyptian book slot. The papyrus is wild and the scatter. Three start 10 free games on their own reels with one symbol drawn to expand: enough of it anywhere pays on all 10 lines at once. | 5x3, 10 lines | 95.11% | [Play](https://apexslots.eu/games/golden-papyrus/) | [Code](golden-papyrus/) |
 | <img src="tiles/nitro-hot.webp" width="96" alt="NITRO HOT"> | **NITRO HOT**<br>A classic fruit slot on three reels. No wild, no scatter, only three of a kind pays. A full screen of plums, oranges, lemons or cherries doubles every line. | 3x3, 5 lines | 95.66% | [Play](https://apexslots.eu/games/nitro-hot/) | [Code](nitro-hot/) |
 | <img src="tiles/scorching-hot.webp" width="96" alt="SCORCHING HOT"> | **SCORCHING HOT**<br>A classic fruit slot. No wild, no free games. Sevens are the top symbol, cherries pay from 2, and three or more stars anywhere pay the total bet on top of the lines. | 5x3, 5 lines | 95.66% | [Play](https://apexslots.eu/games/scorching-hot/) | [Code](scorching-hot/) |
 | <img src="tiles/pearl-reef.webp" width="96" alt="PEARL REEF"> | **PEARL REEF**<br>A reef slot. The turtle is wild, doubles the wins it completes and is the top symbol. Clams pay anywhere and three start 15 free games on their own reels, where every win pays triple. | 5x3, 10 lines | 95.13% | [Play](https://apexslots.eu/games/pearl-reef/) | [Code](pearl-reef/) |
@@ -48,7 +49,7 @@ Each game's own README has its paytable, rules, RTP and the exact commands that 
 
 - Code: [MIT](LICENSE).
 - Art (everything under each game's `public/`, and `tiles/`): [CC BY 4.0](LICENSE-ART.md). Use it anywhere, credit APEXSLOTS.
-- Reference maths under each game's `slotopol/` folder: MIT, copyright schwarzlichtbezirk, see the LICENSE file in that folder.
+- Reference maths under a game's `slotopol/` folder, or a slotopol data file kept beside a game's code: MIT, copyright schwarzlichtbezirk, see the licence file next to it.
 
 ## Credits
 

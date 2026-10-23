@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <radialGradient id="bgGlow" cx="0.5" cy="0.42" r="0.78">
+      <stop offset="0" stop-color="#8a6414"/>
+      <stop offset="0.35" stop-color="#4a3410"/>
+      <stop offset="0.7" stop-color="#241804"/>
+      <stop offset="1" stop-color="#100a02"/>
+    </radialGradient>
+    <radialGradient id="coreGlow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffe9a0" stop-opacity="0.9"/>
+      <stop offset="0.5" stop-color="#f5c542" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#d8a018" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="sheet" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffe9b8"/>
+      <stop offset="0.5" stop-color="#f2c56a"/>
+      <stop offset="1" stop-color="#c98f2a"/>
+    </linearGradient>
+    <linearGradient id="roll" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#a06a14"/>
+      <stop offset="0.5" stop-color="#e0aa3c"/>
+      <stop offset="1" stop-color="#7a4c08"/>
+    </linearGradient>
+    <linearGradient id="jackal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3c4a66"/>
+      <stop offset="0.5" stop-color="#222c44"/>
+      <stop offset="1" stop-color="#101626"/>
+    </linearGradient>
+    <linearGradient id="trim" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffe9a0"/>
+      <stop offset="1" stop-color="#d8a018"/>
+    </linearGradient>
+    <linearGradient id="shell" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4ee0c8"/>
+      <stop offset="0.5" stop-color="#18a890"/>
+      <stop offset="1" stop-color="#0a6452"/>
+    </linearGradient>
+    <linearGradient id="wing" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffe9a0"/>
+      <stop offset="1" stop-color="#c98f2a"/>
+    </linearGradient>
+    <linearGradient id="dune" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8a6a2c"/>
+      <stop offset="1" stop-color="#3a2a0c"/>
+    </linearGradient>
+    <filter id="soft" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="14"/>
+    </filter>
+  </defs>
+
+  <!-- backdrop: torchlit tomb wall over dunes -->
+  <rect width="1024" height="1024" fill="url(#bgGlow)"/>
+  <g fill="none" stroke="#c9a24a" stroke-width="6" opacity="0.22">
+    <path d="M 90 140 L 90 300 M 60 170 L 120 170 M 60 230 L 120 230 M 75 270 A 15 15 0 1 0 105 270"/>
+    <path d="M 934 140 L 934 300 M 904 170 L 964 170 M 904 250 A 15 15 0 1 1 964 250 M 904 290 L 964 290"/>
+    <circle cx="150" cy="560" r="34"/>
+    <path d="M 870 520 L 910 590 L 830 590 Z"/>
+  </g>
+  <ellipse cx="512" cy="460" rx="430" ry="400" fill="url(#coreGlow)"/>
+  <g fill="#ffe9a0" opacity="0.85">
+    <circle cx="150" cy="330" r="5"/><circle cx="240" cy="180" r="4"/><circle cx="420" cy="110" r="5"/>
+    <circle cx="700" cy="90" r="4"/><circle cx="880" cy="220" r="5"/><circle cx="930" cy="430" r="4"/>
+    <circle cx="90" cy="560" r="4"/><circle cx="200" cy="760" r="5"/><circle cx="850" cy="700" r="5"/>
+    <circle cx="640" cy="150" r="3"/><circle cx="330" cy="240" r="3"/><circle cx="770" cy="330" r="3"/>
+  </g>
+  <path d="M 0 820 Q 260 740 512 800 Q 780 860 1024 780 L 1024 1024 L 0 1024 Z" fill="url(#dune)"/>
+
+  <!-- flanking guardians: anubis left, scarab right -->
+  <g transform="translate(200 560) scale(1.15)" opacity="0.96">
+    <g transform="translate(-150 -150)" stroke="#0a0e1a" stroke-linejoin="round">
+      <path d="M 96 44 L 128 92 L 172 92 L 204 44 L 214 58 L 196 108 Q 232 138 232 184 L 232 240 Q 232 262 210 262 L 90 262 Q 68 262 68 240 L 68 184 Q 68 138 104 108 L 86 58 Z"
+            fill="url(#jackal)" stroke-width="9"/>
+      <path d="M 68 216 L 232 216 L 232 240 Q 232 262 210 262 L 90 262 Q 68 262 68 240 Z"
+            fill="url(#trim)" stroke-width="9"/>
+      <path d="M 150 118 L 168 158 L 150 196 L 132 158 Z" fill="url(#trim)" stroke-width="6"/>
+      <g fill="#e8d84a" stroke="none">
+        <path d="M 104 148 L 134 140 L 134 154 L 104 160 Z"/>
+        <path d="M 196 148 L 166 140 L 166 154 L 196 160 Z"/>
+      </g>
+    </g>
+  </g>
+  <g transform="translate(830 590) scale(1.05)" opacity="0.96">
+    <g transform="translate(-150 -150)" stroke="#083c30" stroke-linejoin="round">
+      <path d="M 88 132 Q 20 118 26 178 Q 32 226 96 206 Z" fill="url(#wing)" stroke-width="8"/>
+      <path d="M 212 132 Q 280 118 274 178 Q 268 226 204 206 Z" fill="url(#wing)" stroke-width="8"/>
+      <ellipse cx="150" cy="176" rx="70" ry="62" fill="url(#shell)" stroke-width="9"/>
+      <circle cx="150" cy="94" r="34" fill="url(#shell)" stroke-width="9"/>
+      <path d="M 150 118 L 150 234 M 108 148 Q 150 166 192 148" fill="none" stroke-width="7" stroke-linecap="round"/>
+      <circle cx="150" cy="94" r="12" fill="#ffe9a0" stroke-width="5"/>
+    </g>
+  </g>
+
+  <!-- the giant golden papyrus, heart of the tile -->
+  <g transform="translate(512 430) rotate(-5)">
+    <g filter="url(#soft)" opacity="0.9">
+      <rect x="-290" y="-260" width="580" height="520" rx="30" fill="#f5c542"/>
+    </g>
+    <g transform="scale(2.5)" stroke="#5c3a06" stroke-linejoin="round">
+      <rect x="-88" y="-80" width="176" height="160" rx="8" fill="url(#sheet)" stroke-width="8"/>
+      <rect x="-104" y="-98" width="208" height="34" rx="17" fill="url(#roll)" stroke-width="8"/>
+      <rect x="-104" y="64" width="208" height="34" rx="17" fill="url(#roll)" stroke-width="8"/>
+    </g>
+    <g fill="none" stroke="#8a5c10" stroke-width="17" stroke-linecap="round">
+      <circle cx="0" cy="-55" r="55"/>
+      <path d="M 0 -110 L 0 -145"/>
+      <path d="M -55 0 Q 0 45 55 0"/>
+      <path d="M -135 65 L 135 65"/>
+      <path d="M -105 115 L 105 115"/>
+    </g>
+    <circle cx="0" cy="-55" r="22" fill="#8a5c10"/>
+    <path d="M -210 -185 Q 0 -145 210 -185 L 210 -150 Q 0 -115 -210 -150 Z" fill="#ffffff" opacity="0.3"/>
+  </g>
+
+  <!-- the explorer peering over the dune -->
+  <g transform="translate(512 880) scale(1.25)" opacity="0.98">
+    <g transform="translate(-150 -150)" stroke="#4a2c10" stroke-linejoin="round">
+      <path d="M 96 128 Q 96 210 150 214 Q 204 210 204 128 Z" fill="#e0a870" stroke-width="8"/>
+      <path d="M 38 118 Q 150 96 262 118 Q 262 138 244 136 Q 150 124 56 136 Q 38 138 38 118 Z"
+            fill="#96703a" stroke-width="8"/>
+      <path d="M 86 118 Q 84 52 150 48 Q 216 52 214 118 Q 150 108 86 118 Z" fill="#96703a" stroke-width="8"/>
+      <path d="M 88 104 Q 150 92 212 104 L 212 118 Q 150 106 88 118 Z" fill="#4a2c10" stroke-width="0"/>
+      <g fill="#3a2410" stroke="none">
+        <ellipse cx="126" cy="150" rx="10" ry="12"/>
+        <ellipse cx="174" cy="150" rx="10" ry="12"/>
+        <path d="M 134 186 Q 150 196 166 186 Q 150 178 134 186 Z"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- drifting sand streaks -->
+  <g filter="url(#soft)" opacity="0.35">
+    <path d="M 60 940 Q 512 880 964 940" fill="none" stroke="#f5c542" stroke-width="10" stroke-linecap="round"/>
+    <path d="M 100 100 Q 512 160 924 90" fill="none" stroke="#d8a018" stroke-width="8" stroke-linecap="round"/>
+  </g>
+</svg>
