@@ -10,6 +10,7 @@ Every game runs in the browser on its own. You can play it, read every line of i
 
 | | Game | Layout | RTP | Play | Source |
 |---|---|---|---|---|---|
+| <img src="tiles/fairytale.webp" width="96" alt="FAIRYTALE"> | **FAIRYTALE**<br>A storybook slot. The enchantress is wild and the top symbol. Three lanterns start 10 free games where, before every spin, one symbol is drawn and covers the first two or three reels whole, so every free game pays. | 5x3, 10 lines | 95.57% | [Play](https://apexslots.eu/games/fairytale/) | [Code](fairytale/) |
 | <img src="tiles/samurai.webp" width="96" alt="SAMURAI"> | **SAMURAI**<br>A warrior slot. The samurai is wild and the top symbol. Three gongs pay and start 10 free games on their own reels, where a samurai anywhere on a reel turns the whole reel wild. | 5x3, 20 lines | 95.39% | [Play](https://apexslots.eu/games/samurai/) | [Code](samurai/) |
 | <img src="tiles/the-dynasty.webp" width="96" alt="THE DYNASTY"> | **THE DYNASTY**<br>A royal court. The monarch is wild and doubles the wins it completes. Two heirs call 25 to 45 free games on their own reels, where the other heir is crowned wild. | 5x3, 20 lines | 94.14% | [Play](https://apexslots.eu/games/the-dynasty/) | [Code](the-dynasty/) |
 
