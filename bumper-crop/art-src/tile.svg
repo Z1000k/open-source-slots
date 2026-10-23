@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <radialGradient id="sky" cx="0.5" cy="0.32" r="0.85">
+      <stop offset="0" stop-color="#ffd98a"/>
+      <stop offset="0.32" stop-color="#e8963c"/>
+      <stop offset="0.62" stop-color="#8a4a1c"/>
+      <stop offset="1" stop-color="#2a1608"/>
+    </radialGradient>
+    <linearGradient id="field" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8fc63d"/>
+      <stop offset="0.5" stop-color="#3f7c18"/>
+      <stop offset="1" stop-color="#16330a"/>
+    </linearGradient>
+    <linearGradient id="barn" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e0533c"/>
+      <stop offset="1" stop-color="#7a1c10"/>
+    </linearGradient>
+    <linearGradient id="roof" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5c4a3a"/>
+      <stop offset="1" stop-color="#2c2018"/>
+    </linearGradient>
+    <linearGradient id="wheat" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffe9a8"/>
+      <stop offset="1" stop-color="#c9922c"/>
+    </linearGradient>
+    <linearGradient id="titleFill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff4c0"/>
+      <stop offset="0.5" stop-color="#ffc933"/>
+      <stop offset="1" stop-color="#b57a08"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1024" height="1024" fill="url(#sky)"/>
+  <circle cx="512" cy="330" r="150" fill="#ffe9a8" opacity="0.5"/>
+  <circle cx="512" cy="330" r="104" fill="#fff6cf" opacity="0.85"/>
+
+  <g opacity="0.5" fill="#2a1608">
+    <path d="M 120 300 q 26 -22 52 0 q -26 10 -52 0 Z"/>
+    <path d="M 190 268 q 30 -26 60 0 q -30 12 -60 0 Z"/>
+    <path d="M 828 258 q 26 -22 52 0 q -26 10 -52 0 Z"/>
+  </g>
+
+  <path d="M 0 560 Q 256 508 512 552 Q 768 596 1024 540 L 1024 1024 L 0 1024 Z" fill="url(#field)"/>
+  <g stroke="#16330a" stroke-width="6" opacity="0.35" fill="none">
+    <path d="M 0 660 Q 512 616 1024 656"/>
+    <path d="M 0 760 Q 512 712 1024 754"/>
+    <path d="M 0 872 Q 512 820 1024 866"/>
+  </g>
+
+  <g stroke="#2a1608" stroke-width="10" stroke-linejoin="round">
+    <path d="M 620 560 L 620 400 L 800 320 L 980 400 L 980 560 Z" fill="url(#barn)"/>
+    <path d="M 596 410 L 800 300 L 1004 410 L 980 434 L 800 338 L 620 434 Z" fill="url(#roof)"/>
+    <rect x="742" y="452" width="116" height="108" fill="#3a1208"/>
+    <path d="M 742 452 L 858 560 M 858 452 L 742 560" stroke="#e8b060" stroke-width="9"/>
+  </g>
+
+  <g stroke="#2a1608" stroke-width="9" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M 96 700 q 8 -140 40 -196 q 20 60 12 196 Z" fill="url(#wheat)"/>
+    <path d="M 168 716 q 10 -150 44 -208 q 20 66 10 208 Z" fill="url(#wheat)"/>
+    <path d="M 244 704 q 8 -138 40 -194 q 20 60 12 194 Z" fill="url(#wheat)"/>
+    <path d="M 60 700 H 320 L 300 792 H 80 Z" fill="#8a5a20"/>
+  </g>
+
+  <g stroke="#2a1608" stroke-width="11" stroke-linejoin="round" stroke-linecap="round">
+    <rect x="404" y="632" width="112" height="72" rx="10" fill="#cfeaff"/>
+    <path d="M 330 720 L 330 664 q 0 -16 18 -16 L 470 648 L 470 760 L 348 760 q -18 0 -18 -18 Z" fill="url(#barn)"/>
+    <rect x="464" y="700" width="124" height="66" rx="12" fill="url(#barn)"/>
+    <circle cx="548" cy="772" r="66" fill="#2f2a26"/>
+    <circle cx="548" cy="772" r="32" fill="#ffc933"/>
+    <circle cx="358" cy="788" r="44" fill="#2f2a26"/>
+    <circle cx="358" cy="788" r="20" fill="#ffc933"/>
+  </g>
+
+  <g font-family="Georgia, 'Times New Roman', serif" font-weight="bold" text-anchor="middle">
+    <text x="512" y="196" font-size="130" fill="url(#titleFill)" stroke="#3a1e04" stroke-width="16"
+          paint-order="stroke" letter-spacing="6">BUMPER</text>
+    <text x="512" y="316" font-size="130" fill="url(#titleFill)" stroke="#3a1e04" stroke-width="16"
+          paint-order="stroke" letter-spacing="14">CROP</text>
+  </g>
+
+  <!-- No caption down here: the lobby draws its own name plate over the bottom of the tile. -->
+</svg>

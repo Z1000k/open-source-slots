@@ -1,0 +1,28 @@
+{
+  "name": "bumper-crop",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "BUMPER CROP - 5x3 cascading farm slot with a ladder bonus (math ported from slotopol/server, MIT)",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "sim": "tsx src/sim/run.ts",
+    "sim:bonus": "tsx src/sim/bonus.ts",
+    "sim:exact": "tsx src/sim/exact.ts",
+    "sim:reels": "tsx src/sim/checkReels.ts",
+    "gen:reels": "node src/sim/genReels.mjs"
+  },
+  "dependencies": {
+    "pixi.js": "^8.6.6"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3",
+    "vite": "^6.0.7",
+    "vitest": "^2.1.8"
+  }
+}
