@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#04202e"/>
+      <stop offset="0.32" stop-color="#164a63"/>
+      <stop offset="0.55" stop-color="#e8622a"/>
+      <stop offset="0.68" stop-color="#ffb02e"/>
+      <stop offset="0.7" stop-color="#0e6a7a"/>
+      <stop offset="1" stop-color="#03222c"/>
+    </linearGradient>
+    <radialGradient id="sunDisc" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#fff3c0"/>
+      <stop offset="0.55" stop-color="#ffcf5c"/>
+      <stop offset="1" stop-color="#ff8a2a"/>
+    </radialGradient>
+    <radialGradient id="sunGlow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffcf5c" stop-opacity="0.85"/>
+      <stop offset="0.5" stop-color="#ff8a2a" stop-opacity="0.3"/>
+      <stop offset="1" stop-color="#ff8a2a" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="peel" x1="0.2" y1="0" x2="0.8" y2="1">
+      <stop offset="0" stop-color="#fff3a8"/>
+      <stop offset="0.45" stop-color="#ffd23a"/>
+      <stop offset="1" stop-color="#c98a06"/>
+    </linearGradient>
+    <linearGradient id="case" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e0a35c"/>
+      <stop offset="0.55" stop-color="#a86a24"/>
+      <stop offset="1" stop-color="#5c3408"/>
+    </linearGradient>
+    <linearGradient id="sand" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f2d79a"/>
+      <stop offset="1" stop-color="#b98f4e"/>
+    </linearGradient>
+    <linearGradient id="palm" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0d5a3a"/>
+      <stop offset="1" stop-color="#052618"/>
+    </linearGradient>
+    <filter id="soft" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="14"/>
+    </filter>
+  </defs>
+
+  <!-- sunset sky over an evening sea -->
+  <rect width="1024" height="1024" fill="url(#sky)"/>
+  <ellipse cx="512" cy="700" rx="620" ry="430" fill="url(#sunGlow)"/>
+  <circle cx="512" cy="700" r="212" fill="url(#sunDisc)" opacity="0.95"/>
+  <rect x="0" y="716" width="1024" height="308" fill="#0e6a7a" opacity="0.55"/>
+
+  <!-- sun path and swell lines on the water -->
+  <g stroke="#ffe08a" stroke-linecap="round" opacity="0.55">
+    <path d="M 430 760 L 594 760" stroke-width="14"/>
+    <path d="M 400 800 L 624 800" stroke-width="12"/>
+    <path d="M 434 840 L 590 840" stroke-width="10"/>
+    <path d="M 396 876 L 628 876" stroke-width="8"/>
+  </g>
+  <g stroke="#9fe6ee" stroke-width="7" stroke-linecap="round" opacity="0.4">
+    <path d="M 80 780 L 300 780 M 724 790 L 944 790 M 140 852 L 330 852 M 700 862 L 900 862"/>
+  </g>
+
+  <!-- beach -->
+  <path d="M 0 918 Q 260 884 512 906 Q 780 930 1024 894 L 1024 1024 L 0 1024 Z" fill="url(#sand)"/>
+
+  <!-- palms, left and right -->
+  <g fill="url(#palm)" stroke="#04170f" stroke-width="8" stroke-linejoin="round">
+    <path d="M 128 940 Q 108 800 60 700 L 96 690 Q 152 796 168 938 Z"/>
+    <path d="M 60 700 Q -8 660 -40 690 Q 14 690 56 716 Z"/>
+    <path d="M 60 700 Q 20 620 -30 610 Q 26 640 48 706 Z"/>
+    <path d="M 60 700 Q 88 612 160 596 Q 96 640 78 708 Z"/>
+    <path d="M 60 700 Q 138 662 190 700 Q 122 690 62 718 Z"/>
+    <path d="M 908 946 Q 926 812 972 720 L 936 708 Q 880 810 866 944 Z"/>
+    <path d="M 972 720 Q 1036 678 1064 708 Q 1012 708 974 736 Z"/>
+    <path d="M 972 720 Q 1010 640 1058 628 Q 1006 660 984 726 Z"/>
+    <path d="M 972 720 Q 944 632 874 614 Q 936 660 954 728 Z"/>
+    <path d="M 972 720 Q 896 682 846 720 Q 912 710 970 738 Z"/>
+  </g>
+
+  <!-- the giant banana, heart of the tile -->
+  <g transform="translate(512 430) rotate(-8)">
+    <g filter="url(#soft)" opacity="0.75">
+      <ellipse cx="0" cy="0" rx="330" ry="250" fill="#ffcf5c"/>
+    </g>
+    <g transform="translate(-150 -150) scale(2.05)" stroke="#6b3f00" stroke-linejoin="round">
+      <path d="M 66 60 C 74 166 146 224 230 224 C 256 224 268 206 254 192 C 244 182 228 190 210 188
+               C 144 180 110 128 104 58 C 100 40 66 42 66 60 Z"
+            fill="url(#peel)" stroke-width="9"/>
+      <path d="M 90 44 L 84 20 L 108 26 L 106 50 Z" fill="#8a5a1a" stroke="#4a2a00" stroke-width="7"/>
+      <path d="M 240 214 L 264 218 L 254 236 L 236 228 Z" fill="#8a5a1a" stroke="#4a2a00" stroke-width="7"/>
+      <path d="M 84 66 C 92 152 150 200 214 204 C 152 190 108 148 100 66 Z" fill="#ffffff" opacity="0.42" stroke="none"/>
+    </g>
+  </g>
+
+  <!-- the packed suitcase waiting on the sand -->
+  <g transform="translate(512 880) scale(1.05)">
+    <g transform="translate(-150 -150)" stroke="#2a1a06" stroke-linejoin="round">
+      <path d="M 116 84 Q 116 58 150 58 Q 184 58 184 84 L 184 96 L 162 96 L 162 84 Q 162 78 150 78 Q 138 78 138 84 L 138 96 L 116 96 Z"
+            fill="#c8b48a" stroke-width="8"/>
+      <rect x="44" y="96" width="212" height="152" rx="20" fill="url(#case)" stroke-width="9"/>
+      <rect x="66" y="118" width="168" height="108" rx="10" fill="none" stroke="#ffe6b0" stroke-width="5" opacity="0.55"/>
+      <g fill="#2a1a10" stroke="#150c02" stroke-width="6">
+        <rect x="88" y="90" width="26" height="164" rx="6"/>
+        <rect x="186" y="90" width="26" height="164" rx="6"/>
+      </g>
+      <g fill="#ffcf5c" stroke="#6b4a00" stroke-width="5">
+        <rect x="84" y="152" width="34" height="26" rx="5"/>
+        <rect x="182" y="152" width="34" height="26" rx="5"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- warm haze across the water -->
+  <g filter="url(#soft)" opacity="0.35">
+    <path d="M 60 742 Q 512 706 964 742" fill="none" stroke="#ffcf5c" stroke-width="12" stroke-linecap="round"/>
+    <path d="M 100 120 Q 512 180 924 110" fill="none" stroke="#17c3d4" stroke-width="8" stroke-linecap="round"/>
+  </g>
+</svg>

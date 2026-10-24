@@ -1,0 +1,790 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --gold: #ffcf5c;
+  --gold-hi: #fff0b8;
+  --lapis: #17c3d4;
+  --deep: #021a20;
+  --frame: #0e7c88;
+  --sand: #ffd9a0;
+  --sand-dim: #7fb8bd;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: url(/assets/art/bg.webp) center / cover no-repeat var(--deep);
+  color: #fff;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  overflow: hidden;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ---------------------------------------------------------------- layout */
+
+#app {
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px;
+}
+
+#app.fitted {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 390px;
+  height: var(--fit-h);
+  transform-origin: 0 0;
+  padding: 8px;
+}
+
+#table {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 960px;
+}
+
+/* wordmark, shared by logo / loader / intro */
+
+#logo,
+.loader-title,
+.intro-title {
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  line-height: 0.95;
+  text-align: center;
+}
+
+#logo .t1,
+.loader-title .t1,
+.intro-title .t1 {
+  display: block;
+  color: var(--gold);
+  text-shadow: 0 0 24px rgba(255, 207, 92, 0.7), 0 3px 0 #04525e, 0 5px 8px rgba(0, 0, 0, 0.6);
+}
+
+#logo .t2,
+.loader-title .t2,
+.intro-title .t2 {
+  display: block;
+  color: #fff;
+  background: linear-gradient(#fffbe0, var(--gold) 55%, #0e7f8c);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 18px rgba(255, 207, 92, 0.75));
+}
+
+#logo {
+  font-size: clamp(26px, 4.2vh, 44px);
+}
+
+#logo .t2 {
+  font-size: 1.35em;
+}
+
+/* ---------------------------------------------------------------- machine */
+
+#machine {
+  width: 100%;
+  padding: 10px;
+  background: linear-gradient(#0a5566, #042a33);
+  border: 3px solid var(--frame);
+  outline: 2px solid #032630;
+  border-radius: 16px;
+  box-shadow:
+    0 0 0 1px rgba(255, 207, 92, 0.25),
+    0 0 32px rgba(23, 195, 212, 0.25),
+    inset 0 0 22px rgba(0, 0, 0, 0.7);
+}
+
+/* the canvas is transparent: this solid backing keeps the page art from
+   showing through the reels */
+#stage {
+  border-radius: 8px;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 90% 70% at 50% 20%, rgba(255, 207, 92, 0.1), transparent 70%),
+    linear-gradient(#021c22, #011216);
+}
+
+#stage canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ---------------------------------------------------------------- hud */
+
+#ui {
+  width: 100%;
+}
+
+#hud-bar {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto auto 1fr auto auto 1fr;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 14px 20px;
+  background: linear-gradient(#06414f, #032a34);
+  border: 2px solid var(--frame);
+  border-radius: 14px;
+}
+
+.meter {
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  font-size: 19px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.meter-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--sand-dim);
+}
+
+#m-win {
+  color: var(--gold-hi);
+}
+
+.bet-stepper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bet-stepper button {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 2px solid var(--frame);
+  background: linear-gradient(#0a5867, #032630);
+  color: var(--gold);
+  font-size: 20px;
+  font-weight: 900;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.bet-stepper button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+#spin-btn {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 3px solid var(--gold);
+  background: radial-gradient(circle at 35% 30%, #ffe89a, #ffb02e 55%, #b06a00);
+  color: #032630;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 0 18px rgba(255, 207, 92, 0.5), inset 0 2px 6px rgba(255, 255, 255, 0.4);
+  transition: transform 0.08s;
+}
+
+#spin-btn:active {
+  transform: scale(0.94);
+}
+
+#spin-btn svg {
+  width: 34px;
+  height: 34px;
+}
+
+#info-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 2px solid var(--frame);
+  background: transparent;
+  color: var(--sand-dim);
+  font: italic 700 18px Georgia, serif;
+  cursor: pointer;
+}
+
+#sound-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 2px solid var(--frame);
+  background: transparent;
+  color: var(--sand-dim);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+#sound-btn svg {
+  width: 19px;
+  height: 19px;
+}
+
+#hud-message {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 3px;
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--sand);
+  pointer-events: none;
+}
+
+/* -------------------------------------------------------- free games HUD */
+
+#fs-panel {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 16px;
+  background: linear-gradient(#0a5867, #032630);
+  border: 2px solid var(--gold);
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: var(--gold-hi);
+  box-shadow: 0 0 14px rgba(255, 207, 92, 0.45);
+  white-space: nowrap;
+  z-index: 5;
+}
+
+#fs-panel[hidden] {
+  display: none;
+}
+
+#fs-panel .fs-sym img {
+  width: 26px;
+  height: 26px;
+  display: block;
+}
+
+#fs-panel .fs-left {
+  color: #fff;
+  font-size: 15px;
+}
+
+#fs-skip {
+  border: 1px solid var(--gold);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.3);
+  color: var(--gold-hi);
+  font: 800 10px/1 'Segoe UI', system-ui, sans-serif;
+  letter-spacing: 0.14em;
+  padding: 5px 9px;
+  cursor: pointer;
+}
+
+#fs-skip[hidden] {
+  display: none;
+}
+
+/* ---------------------------------------------------------------- big win */
+
+/* the id rules below set display, which would beat the hidden attribute's
+   display:none without this */
+#bigwin[hidden],
+#gameinfo[hidden],
+#bonus-overlay[hidden] {
+  display: none;
+}
+
+#bigwin {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 6px;
+  background: radial-gradient(ellipse at center, rgba(4, 60, 72, 0.85), rgba(1, 14, 18, 0.55));
+  z-index: 40;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+#bigwin.show {
+  opacity: 1;
+}
+
+.bigwin-title {
+  font-size: clamp(48px, 10vw, 96px);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  color: var(--gold);
+  text-shadow: 0 0 30px rgba(255, 207, 92, 0.9), 0 4px 0 #04525e;
+  transform: scale(0.9);
+  transition: transform 0.3s;
+}
+
+#bigwin.show .bigwin-title {
+  transform: scale(1);
+}
+
+.bigwin-amount {
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: #fff;
+}
+
+/* -------------------------------------------------------- bonus overlay */
+
+#bonus-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 42;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(ellipse at center, rgba(4, 60, 72, 0.92), rgba(1, 14, 18, 0.7));
+  opacity: 0;
+  transition: opacity 0.3s;
+  cursor: pointer;
+}
+
+#bonus-overlay.show {
+  opacity: 1;
+}
+
+.bo-inner {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  text-align: center;
+  padding: 24px;
+}
+
+.bo-kicker {
+  font-size: 14px;
+  letter-spacing: 0.34em;
+  color: var(--sand);
+  font-weight: 700;
+}
+
+.bo-title {
+  font-size: clamp(40px, 8vw, 76px);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  color: var(--gold);
+  text-shadow: 0 0 30px rgba(255, 207, 92, 0.9), 0 4px 0 #04525e;
+}
+
+.bo-amount {
+  font-variant-numeric: tabular-nums;
+}
+
+.bo-sub {
+  font-size: 14px;
+  letter-spacing: 0.18em;
+  color: var(--gold-hi);
+  font-weight: 700;
+}
+
+.bo-art .bo-sym img {
+  width: clamp(110px, 20vw, 170px);
+  height: auto;
+  filter: drop-shadow(0 0 26px rgba(255, 207, 92, 0.8));
+  animation: bo-pop 0.45s ease-out;
+}
+
+@keyframes bo-pop {
+  from {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.bo-hint {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  color: var(--sand);
+}
+
+/* ---------------------------------------------------------------- loader */
+
+#loader,
+#intro {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  /* the beach art, dimmed so the title and small text read over it */
+  background:
+    linear-gradient(rgba(2, 26, 32, 0.6), rgba(2, 26, 32, 0.6)),
+    url(/assets/art/bg.webp) center / cover no-repeat var(--deep);
+  transition: opacity 0.5s;
+}
+
+#loader.done,
+#intro.done {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loader-inner {
+  display: grid;
+  justify-items: center;
+  gap: 22px;
+}
+
+.loader-presents {
+  font-size: 13px;
+  letter-spacing: 0.4em;
+  color: var(--sand-dim);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+}
+
+.loader-title,
+.intro-title {
+  font-size: clamp(40px, 8vw, 72px);
+}
+
+.loader-title .t2,
+.intro-title .t2 {
+  font-size: 1.08em;
+}
+
+.loader-bar {
+  width: min(320px, 70vw);
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+}
+
+.loader-fill {
+  height: 100%;
+  width: 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #0e7f8c, var(--gold));
+  transition: width 0.25s;
+}
+
+/* ---------------------------------------------------------------- intro */
+
+#intro {
+  z-index: 50;
+  cursor: pointer;
+  overflow-y: auto;
+}
+
+.intro-inner {
+  display: grid;
+  justify-items: center;
+  gap: 18px;
+  padding: 28px 16px;
+  max-width: 900px;
+}
+
+.intro-badges {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  color: var(--sand);
+  font-weight: 700;
+}
+
+.intro-maxwin b {
+  color: var(--gold);
+  font-size: 15px;
+}
+
+.vol-pips i {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--gold);
+  margin-left: 4px;
+  box-shadow: 0 0 6px rgba(255, 207, 92, 0.8);
+}
+
+.vol-pips i.off {
+  background: #0a5867;
+  box-shadow: none;
+}
+
+.intro-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.intro-card {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  padding: 18px 14px;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--frame);
+  border-radius: 14px;
+  text-align: center;
+}
+
+.intro-art img {
+  width: 84px;
+  height: 84px;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.6));
+}
+
+.intro-card h3 {
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+}
+
+.intro-card p {
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: #d8f1f3;
+}
+
+.intro-continue {
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  color: var(--sand-dim);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+  animation: blink 1.6s ease-in-out infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.35;
+  }
+}
+
+/* ---------------------------------------------------------------- game info */
+
+#gameinfo {
+  position: fixed;
+  inset: 0;
+  z-index: 45;
+  background: rgba(1, 10, 14, 0.82);
+  display: grid;
+  place-items: start center;
+  overflow-y: auto;
+  padding: 24px 12px;
+}
+
+.gi-inner {
+  position: relative;
+  width: min(760px, 96vw);
+  background: linear-gradient(#06414f, #032a34);
+  border: 2px solid var(--frame);
+  border-radius: 16px;
+  padding: 26px 26px 20px;
+  display: grid;
+  gap: 14px;
+}
+
+#gi-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--frame);
+  background: transparent;
+  color: var(--gold);
+  font-size: 22px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.gi-inner h2 {
+  font-size: 20px;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  text-align: center;
+}
+
+.gi-inner h3 {
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  color: var(--sand);
+  border-bottom: 1px solid var(--frame);
+  padding-bottom: 5px;
+  margin-top: 6px;
+}
+
+.gi-paytable {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 10px;
+}
+
+.gi-sym {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid #084b57;
+  border-radius: 10px;
+  padding: 8px;
+}
+
+.gi-art img {
+  width: 56px;
+  height: 56px;
+}
+
+.gi-pays {
+  display: grid;
+  gap: 1px;
+  font-size: 12.5px;
+  font-variant-numeric: tabular-nums;
+}
+
+.gi-pay {
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+}
+
+.gi-pay b {
+  color: var(--sand-dim);
+  font-weight: 700;
+}
+
+.gi-pay span {
+  color: var(--gold-hi);
+  font-weight: 700;
+}
+
+.gi-wild {
+  border-color: var(--gold);
+  box-shadow: 0 0 10px rgba(255, 207, 92, 0.35);
+}
+
+.gi-star {
+  grid-column: 1 / -1;
+  flex-wrap: wrap;
+}
+
+.gi-star p {
+  flex: 1 1 200px;
+  font-size: 11.5px;
+  color: #d8f1f3;
+  line-height: 1.5;
+}
+
+.gi-lines {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.gi-line {
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--sand-dim);
+}
+
+.gi-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 14px);
+  gap: 3px;
+  padding: 6px;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 6px;
+}
+
+.gi-grid i {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  background: #084b57;
+}
+
+.gi-grid i.on {
+  background: var(--gold);
+  box-shadow: 0 0 5px rgba(255, 207, 92, 0.8);
+}
+
+.gi-rules {
+  list-style: none;
+  display: grid;
+  gap: 6px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: #d8f1f3;
+}
+
+.gi-rules li::before {
+  content: '• ';
+  color: var(--gold);
+}
+
+.gi-keys {
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: #5f9aa2;
+}
+
+/* ---------------------------------------------------------------- phone */
+
+@media (max-width: 900px) and (orientation: portrait) {
+  #logo {
+    font-size: 30px;
+  }
+
+  #hud-bar {
+    grid-template-columns: auto auto 1fr auto 1fr;
+    grid-template-rows: auto auto;
+    row-gap: 8px;
+  }
+
+  #spin-btn {
+    grid-row: 1 / 3;
+    grid-column: 4;
+    width: 84px;
+    height: 84px;
+  }
+
+  .intro-cards {
+    grid-template-columns: 1fr;
+  }
+}
