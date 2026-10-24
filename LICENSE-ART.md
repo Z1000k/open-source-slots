@@ -2,7 +2,7 @@
 
 Everything under each game's `public/` folder (symbol art, backgrounds) and the game tiles under `tiles/` is
 
-Copyright (c) 2026 Andy Neokleous (APEXSLOTS)
+Copyright (c) 2026 ApexSlots (APEXSLOTS)
 
 and is licensed under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).
 
